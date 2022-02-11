@@ -1,0 +1,71 @@
+[{
+"id": "1",
+"intitule": "Quelle est la marque du véhicule ?",
+"typeComponent": "multiChoixBuilder",
+"reponsesPossibles": [
+  {
+    "key": "1",
+    "reponseText": "choix 1",
+    "nextQuestionId": "2"
+  },
+  {
+    "key": "2",
+    "reponseText": "choix 2",
+    "nextQuestionId": "3"
+  }
+],
+"previousQuestionId" : "null",
+"reponseChoisie": ""
+},
+  {
+    "id": "2",
+    "intitule": "Indiquez la date de mise en circulation du véhicule : ",
+    "typeComponent": "dateBuilder",
+    "defaultJour" : 1,
+    "defaultMois" : 1,
+    "defaultAnnee" : 2000,
+    "reponsesPossibles":
+      {
+        "key": "defaultReponse",
+        "reponseText": "Suivant",
+        "nextQuestionId": "3"
+      }
+    ,
+    "reponseChoisie" : "",
+    "previousQuestionId" : ""
+    }
+  ,{
+    "id": "3",
+    "intitule": "Quel est le modèle du véhicule ?",
+    "typeComponent": "inputBuilder",
+    "reponsesPossibles":
+      {
+        "key": "defaultReponse",
+        "nameAttribut": "inputBuilderName",
+        "reponseText": "Suivant",
+        "nextQuestionId": "4"
+      }
+    ,
+    "reponseChoisie" : "",
+    "previousQuestionId" : ""
+    },
+    {
+      "id": "4",
+      "intitule": "indiquez la version",
+      "typeComponent": "multiChoixBuilder",
+      "reponsesPossibles": [
+        {
+          "key": "1",
+          "reponseText": "choix 1",
+          "nextQuestionId": "6"
+        },
+        {
+          "key": "2",
+          "reponseText": "choix 2",
+          "nextQuestionId": "7"
+        }
+      ],
+      "previousQuestionId" : "",
+      "reponseChoisie": ""
+      }
+]

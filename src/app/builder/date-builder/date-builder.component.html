@@ -1,0 +1,55 @@
+<div *ngIf="currentQuestion" class="row" @fade>
+  <div class="col-12">
+    <h2>{{ currentQuestion.intitule }}</h2>
+  </div>
+
+  <form [formGroup]="dateForm">
+    <div class="row">
+      <div class="col-2">
+        <mat-form-field class="example-form-field" appearance="fill">
+          <mat-label>Jour</mat-label>
+          <input matInput type="text" formControlName="jour" />
+        </mat-form-field>
+      </div>
+      <div class="col-2">
+        <mat-form-field class="example-form-field" appearance="fill">
+          <mat-label>Mois</mat-label>
+          <input matInput type="text" formControlName="mois" />
+        </mat-form-field>
+      </div>
+      <div class="col-2">
+        <mat-form-field class="example-form-field" appearance="fill">
+          <mat-label>Année</mat-label>
+          <input matInput type="text" formControlName="annee" />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <!--<app-date-builder></app-date-builder>-->
+
+  <div class="col-4" *ngIf="currentQuestion.previousQuestionId !== null">
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="previousQuestion(currentQuestion.previousQuestionId)"
+    >
+      précédent
+    </button>
+  </div>
+
+  <div class="col-4">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="
+        nextQuestionRedirection(
+          currentQuestion.reponsesPossibles.nextQuestionId,
+          currentQuestion.id
+        )
+      "
+    >
+      Suivant
+    </button>
+  </div>
+  <div class="clearBoth">&nbsp;</div>
+</div>

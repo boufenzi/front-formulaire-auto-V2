@@ -1,0 +1,30 @@
+<div class="row" @fade>
+  <div class="col-12">
+    <h2>{{ currentQuestion.intitule }}</h2>
+  </div>
+  <div *ngFor="let reponse of currentQuestion.reponsesPossibles" class="col-1">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="
+        nextQuestionRedirection(
+          reponse.nextQuestionId,
+          reponse.reponseText,
+          currentQuestion.id
+        )
+      "
+    >
+      {{ reponse.reponseText }}
+    </button>
+  </div>
+  <div class="clearBoth">&nbsp;</div>
+  <div class="col-12" *ngIf="currentQuestion.previousQuestionId !== 'null'">
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="previousQuestion(currentQuestion.previousQuestionId)"
+    >
+      précédent
+    </button>
+  </div>
+</div>

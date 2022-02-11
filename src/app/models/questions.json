@@ -1,0 +1,51 @@
+[{
+"id": 1,
+"intitule": "indiquez votre date mise en circulation",
+"reponse": [
+  {
+    "id": 1,
+    "type": "input",
+    "label": "jour"
+
+  },
+  {
+    "id": 2,
+    "type": "input",
+    "label": "mois"
+
+  },
+  {
+    "id": 3,
+    "type": "input",
+    "label": "annee"
+
+  }
+],
+"nextQuestion": 3
+},{
+  "id": 2,
+  "intitule": "indiquez la marque",
+  "reponse": [
+    {
+      "id": 4,
+      "type": "select",
+      "label": "marque"
+
+    }
+  ],
+  "nextQuestion": 3
+  }
+  ,{
+    "id": 3,
+    "intitule": "indiquez la modele",
+    "reponse": [
+      {
+        "id": 4,
+        "type": "select",
+        "label": "modele"
+
+      }
+    ],
+    "nextQuestion": 4
+    }
+]
