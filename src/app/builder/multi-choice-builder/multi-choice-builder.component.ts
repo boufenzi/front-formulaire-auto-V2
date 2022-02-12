@@ -11,11 +11,11 @@ import { SubSink } from 'subsink';
   animations: [fadeInAnimation],
 })
 export class MultiChoiceBuilderComponent implements OnInit, OnDestroy {
-  questions = this.questionService.getQuestion();
   currentQuestion: any;
   @Input() questionToShow: string;
   previousQuestionId: string;
   subSink = new SubSink();
+  currentQuestionId: string;
 
   constructor(
     private route: Router,
@@ -25,24 +25,38 @@ export class MultiChoiceBuilderComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     if (this.questionToShow) {
-      this.currentQuestion = this.questionService.findById(this.questionToShow);
-      this.previousQuestionId = this.currentQuestion.previousQuestionId;
+      this.currentQuestionId = this.questionToShow;
+      //  this.previousQuestionId = this.currentQuestion.previousQuestionId;
     } else {
       await this.router.paramMap.subscribe((param) => {
         //@ts-ignore
         this.previousQuestionId = param.params.previousQuestionId;
-
         //@ts-ignore
-        this.questionToShow = param.params.id;
-        this.questionService.addPreviousQuestion(
-          this.questionToShow,
-          this.previousQuestionId
-        );
-
-        this.currentQuestion = this.questionService.findById(
-          this.questionToShow
-        );
+        this.currentQuestionId = param.params.id;
       });
+    }
+
+    this.getCurrentQuestionData();
+    this.getPreviousQuestionIdFromObjectIfNotInRouter();
+    this.addPreviousQuestionToObject();
+  }
+  getCurrentQuestionData() {
+    this.currentQuestion = this.questionService.findById(
+      this.currentQuestionId
+    );
+  }
+
+  getPreviousQuestionIdFromObjectIfNotInRouter() {
+    if (!this.previousQuestionId)
+      this.previousQuestionId = this.currentQuestion.previousQuestionId;
+  }
+
+  addPreviousQuestionToObject() {
+    if (!!this.previousQuestionId) {
+      this.questionService.addPreviousQuestion(
+        this.currentQuestionId,
+        this.previousQuestionId
+      );
     }
   }
 
