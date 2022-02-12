@@ -8,33 +8,50 @@
       <div class="col-2">
         <mat-form-field class="example-form-field" appearance="fill">
           <mat-label>Jour</mat-label>
-          <input matInput type="text" formControlName="jour" />
+          <input
+            matInput
+            type="number"
+            formControlName="jour"
+            min="1"
+            max="31"
+            (change)="jour > 31 ? (jour = 31) : jour"
+          />
         </mat-form-field>
       </div>
       <div class="col-2">
         <mat-form-field class="example-form-field" appearance="fill">
           <mat-label>Mois</mat-label>
-          <input matInput type="text" formControlName="mois" />
+          <input
+            matInput
+            type="number"
+            formControlName="mois"
+            min="1"
+            max="12"
+            (change)="mois > 12 ? (mois = 12) : mois"
+          />
         </mat-form-field>
       </div>
       <div class="col-2">
         <mat-form-field class="example-form-field" appearance="fill">
           <mat-label>Année</mat-label>
-          <input matInput type="text" formControlName="annee" />
+          <input
+            matInput
+            type="number"
+            formControlName="annee"
+            min="1945"
+            (change)="annee < 1945 ? (annee = 1945) : annee"
+          />
         </mat-form-field>
       </div>
     </div>
   </form>
   <!--<app-date-builder></app-date-builder>-->
 
-  <div class="col-4" *ngIf="currentQuestion.previousQuestionId !== null">
-    <button
-      mat-stroked-button
-      color="primary"
-      (click)="previousQuestion(currentQuestion.previousQuestionId)"
-    >
-      précédent
-    </button>
+  <div class="col-4">
+    <app-previous-question
+      [currentQuestion]="currentQuestion"
+      (previousQuestionEvent)="previousQuestion($event)"
+    ></app-previous-question>
   </div>
 
   <div class="col-4">

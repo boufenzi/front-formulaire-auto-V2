@@ -14,6 +14,7 @@ export class QuestionRoutingComponent implements OnInit {
   constructor(public questionService: QuestionsService) {}
 
   ngOnInit(): void {
+    // we get the first question and get the right component to show first
     this.currentQuestion = this.questionService.findById(this.firstQuestion);
   }
   /*

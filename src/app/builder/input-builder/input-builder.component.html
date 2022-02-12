@@ -11,14 +11,11 @@
       </div>
     </div>
   </form>
-  <div class="col-2" *ngIf="currentQuestion.previousQuestionId !== null">
-    <button
-      mat-stroked-button
-      color="primary"
-      (click)="previousQuestion(currentQuestion.previousQuestionId)"
-    >
-      précédent
-    </button>
+  <div class="col-2">
+    <app-previous-question
+      [currentQuestion]="currentQuestion"
+      (previousQuestionEvent)="previousQuestion($event)"
+    ></app-previous-question>
   </div>
   <div class="col-4">
     <button

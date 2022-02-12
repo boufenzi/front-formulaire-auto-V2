@@ -60,9 +60,7 @@ export class MultiChoiceBuilderComponent implements OnInit, OnDestroy {
     ]); // show selon type component de la next question
   }
 
-  previousQuestion(previousQuestionId: string) {
-    // recuperer l'object precédent
-    let previousQuestion = this.questionService.findById(previousQuestionId);
+  previousQuestion(previousQuestion: any) {
     this.route.navigate([
       previousQuestion.typeComponent,
       {

@@ -18,13 +18,10 @@
     </button>
   </div>
   <div class="clearBoth">&nbsp;</div>
-  <div class="col-12" *ngIf="currentQuestion.previousQuestionId !== 'null'">
-    <button
-      mat-stroked-button
-      color="primary"
-      (click)="previousQuestion(currentQuestion.previousQuestionId)"
-    >
-      précédent
-    </button>
+  <div class="col-12">
+    <app-previous-question
+      [currentQuestion]="currentQuestion"
+      (previousQuestionEvent)="previousQuestion($event)"
+    ></app-previous-question>
   </div>
 </div>

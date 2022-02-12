@@ -1,0 +1,8 @@
+<button
+  *ngIf="currentQuestion.previousQuestionId !== 'null'"
+  mat-stroked-button
+  color="primary"
+  (click)="previousQuestion(currentQuestion.previousQuestionId)"
+>
+  précédent
+</button>

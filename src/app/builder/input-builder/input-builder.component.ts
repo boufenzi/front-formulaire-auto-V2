@@ -49,8 +49,7 @@ export class InputBuilderComponent implements OnInit, OnDestroy {
     );
   }
 
-  previousQuestion(previousQuestionId: string) {
-    let previousQuestion = this.questionService.findById(previousQuestionId);
+  previousQuestion(previousQuestion: any) {
     this.route.navigate([
       previousQuestion.typeComponent,
       {

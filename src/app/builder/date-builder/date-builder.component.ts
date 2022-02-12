@@ -25,7 +25,11 @@ export class DateBuilderComponent implements OnInit, OnDestroy {
   previousQuestionId: string;
   dateForm = new FormGroup({
     jour: new FormControl('', Validators.required),
-    mois: new FormControl('', Validators.required),
+    mois: new FormControl('', [
+      Validators.required,
+      Validators.min(1),
+      Validators.max(12),
+    ]),
     annee: new FormControl('', Validators.required),
   });
 
@@ -39,27 +43,38 @@ export class DateBuilderComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     if (this.questionToShow) {
-      this.currentQuestion = this.questionService.findById(this.questionToShow);
-      this.previousQuestionId = this.currentQuestion.previousQuestionId;
+      this.currentQuestionId = this.questionToShow;
     } else {
       await this.router.paramMap.subscribe((param) => {
         //@ts-ignore
-        this.previousQuestionId = param.params.previousQuestionId;
-
-        //@ts-ignore
         this.currentQuestionId = param.params.id;
-
-        if (!!this.previousQuestionId) {
-          this.questionService.addPreviousQuestion(
-            this.currentQuestionId,
-            this.previousQuestionId
-          );
-        }
-
-        this.currentQuestion = this.questionService.findById(
-          this.currentQuestionId
-        );
+        //@ts-ignore
+        this.previousQuestionId = param.params.previousQuestionId;
       });
+    }
+    this.getCurrentQuestionData();
+    this.getPreviousQuestionIdFromObjectIfNotInRouter();
+    this.setDefaultValueForForm(this.currentQuestion);
+    this.addPreviousQuestionToObject();
+  }
+
+  getCurrentQuestionData() {
+    this.currentQuestion = this.questionService.findById(
+      this.currentQuestionId
+    );
+  }
+
+  getPreviousQuestionIdFromObjectIfNotInRouter() {
+    if (!this.previousQuestionId)
+      this.previousQuestionId = this.currentQuestion.previousQuestionId;
+  }
+
+  addPreviousQuestionToObject() {
+    if (!!this.previousQuestionId) {
+      this.questionService.addPreviousQuestion(
+        this.currentQuestionId,
+        this.previousQuestionId
+      );
     }
   }
 
@@ -79,8 +94,7 @@ export class DateBuilderComponent implements OnInit, OnDestroy {
     ]); // show selon type component de la next question
   }
 
-  previousQuestion(previousQuestionId: string) {
-    let previousQuestion = this.questionService.findById(previousQuestionId);
+  previousQuestion(previousQuestion: any) {
     this.route.navigate([
       previousQuestion.typeComponent,
       {
@@ -88,6 +102,12 @@ export class DateBuilderComponent implements OnInit, OnDestroy {
         previousQuestionId: previousQuestion.previousQuestionId,
       },
     ]); // show selon type component de la next question
+  }
+
+  setDefaultValueForForm(currentQuestion) {
+    this.dateForm.get('jour').setValue(currentQuestion.defaultJour);
+    this.dateForm.get('mois').setValue(currentQuestion.defaultMois);
+    this.dateForm.get('annee').setValue(currentQuestion.defaultAnnee);
   }
 
   ngOnDestroy(): void {
