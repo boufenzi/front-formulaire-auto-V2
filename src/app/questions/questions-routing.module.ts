@@ -4,6 +4,8 @@ import { DateBuilderComponent } from './../builder/date-builder/date-builder.com
 import { QuestionRoutingComponent } from './question-routing/question-routing.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpChoicesBuilderComponent } from '../builder/http-choices-builder/http-choices-builder.component';
+import { HttpChoicesSimpleButtonsBuilderComponent } from '../builder/http-choices-simple-buttons-builder/http-choices-simple-buttons-builder.component';
 
 const routes: Routes = [
   {
@@ -18,9 +20,16 @@ const routes: Routes = [
     path: 'inputBuilder',
     component: InputBuilderComponent,
   },
-
   {
-    path: 'question',
+    path: 'httpChoicesBuilder',
+    component: HttpChoicesBuilderComponent,
+  },
+  {
+    path: 'HttpChoicesSimpleButtonsBuilder',
+    component: HttpChoicesSimpleButtonsBuilderComponent
+  },
+  {
+    path: '',
     component: QuestionRoutingComponent,
   },
 ];

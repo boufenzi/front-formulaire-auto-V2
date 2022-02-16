@@ -1,5 +1,5 @@
 import { fadeInAnimation } from './../../models/fadeAnimationIn';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
@@ -16,6 +16,7 @@ export class InputBuilderComponent implements OnInit, OnDestroy {
   currentQuestion: any;
   currentQuestionId: string;
   previousQuestionId: string;
+  @Input() questionToShow: string;
 
   inputForm = new FormGroup({
     inputBuilderName: new FormControl('', Validators.required),
@@ -30,23 +31,40 @@ export class InputBuilderComponent implements OnInit, OnDestroy {
   ) {}
 
   async ngOnInit() {
-    await this.subSink.add(
-      this.router.paramMap.subscribe((param) => {
+    if (this.questionToShow) {
+      this.currentQuestionId = this.questionToShow;
+      //  this.previousQuestionId = this.currentQuestion.previousQuestionId;
+    } else {
+      await this.router.paramMap.subscribe((param) => {
         //@ts-ignore
         this.previousQuestionId = param.params.previousQuestionId;
         //@ts-ignore
         this.currentQuestionId = param.params.id;
+      });
+    }
+    this.getCurrentQuestionData();
+    this.getPreviousQuestionIdFromObjectIfNotInRouter();
+    this.addPreviousQuestionToObject();
+  }
 
-        this.questionService.addPreviousQuestion(
-          this.currentQuestionId,
-          this.previousQuestionId
-        );
-
-        this.currentQuestion = this.questionService.findById(
-          this.currentQuestionId
-        );
-      })
+  getCurrentQuestionData() {
+    this.currentQuestion = this.questionService.findById(
+      this.currentQuestionId
     );
+  }
+
+  getPreviousQuestionIdFromObjectIfNotInRouter() {
+    if (!this.previousQuestionId)
+      this.previousQuestionId = this.currentQuestion.previousQuestionId;
+  }
+
+  addPreviousQuestionToObject() {
+    if (!!this.previousQuestionId) {
+      this.questionService.addPreviousQuestion(
+        this.currentQuestionId,
+        this.previousQuestionId
+      );
+    }
   }
 
   previousQuestion(previousQuestion: any) {

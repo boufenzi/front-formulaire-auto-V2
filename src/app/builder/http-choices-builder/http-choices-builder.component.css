@@ -1,0 +1,14 @@
+.buttonClassSpecial button {
+    border: 0;
+padding: .25rem;
+background-color: #fff;
+
+border-radius: .25rem;
+max-width: 100%;
+height: auto;
+}
+
+.buttonClassSpecial img {
+    width: 100px;
+    height: 100px;
+}

@@ -9,6 +9,8 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { SubSink } from 'subsink';
+import { CarsService } from 'src/app/services/cars.service';
+import { Cars } from 'src/app/models/Cars';
 
 @Component({
   selector: 'app-date-builder',
@@ -23,14 +25,20 @@ export class DateBuilderComponent implements OnInit, OnDestroy {
   currentQuestion: any;
   currentQuestionId: string;
   previousQuestionId: string;
+  dateLimit = new Date().getFullYear()+1;
   dateForm = new FormGroup({
-    jour: new FormControl('', Validators.required),
+    jour: new FormControl('', [Validators.required,    Validators.min(1),
+      Validators.max(31)]),
     mois: new FormControl('', [
       Validators.required,
       Validators.min(1),
       Validators.max(12),
     ]),
-    annee: new FormControl('', Validators.required),
+    annee: new FormControl('', [
+      Validators.required,
+      Validators.min(1945),
+      Validators.max(this.dateLimit)
+    ]),
   });
 
   subSink = new SubSink();
@@ -38,7 +46,9 @@ export class DateBuilderComponent implements OnInit, OnDestroy {
   constructor(
     private route: Router,
     public questionService: QuestionsService,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private carsService: CarsService, 
+    private carsAttribut: Cars
   ) {}
 
   async ngOnInit() {
@@ -78,7 +88,14 @@ export class DateBuilderComponent implements OnInit, OnDestroy {
     }
   }
 
+putDataforUrlParams () {
+  this.carsService.putDataFromJsonObject(this.currentQuestion,
+     this.dateForm.get('annee').value);
+   
+}
+
   nextQuestionRedirection(idNextQuestion: number, currentQuestionId: string) {
+ this.putDataforUrlParams();
     let response =
       this.dateForm.get('annee').value +
       '-' +

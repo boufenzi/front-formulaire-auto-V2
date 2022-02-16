@@ -11,6 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { PreviousQuestionComponent } from './previous-question/previous-question.component';
+import { DateBuilderLimitationInputDirective } from '../directives/date-builder-limitation-input.directive';
+import { HttpChoicesBuilderComponent } from './http-choices-builder/http-choices-builder.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpChoicesSimpleButtonsBuilderComponent } from './http-choices-simple-buttons-builder/http-choices-simple-buttons-builder.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,9 @@ import { PreviousQuestionComponent } from './previous-question/previous-question
     MultiChoiceBuilderComponent,
     InputBuilderComponent,
     PreviousQuestionComponent,
+    DateBuilderLimitationInputDirective,
+    HttpChoicesBuilderComponent,
+    HttpChoicesSimpleButtonsBuilderComponent
   ],
   imports: [
     CommonModule,
@@ -27,12 +34,15 @@ import { PreviousQuestionComponent } from './previous-question/previous-question
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule,
     MatIconModule,
+    
   ],
   exports: [
     DateBuilderComponent,
     MultiChoiceBuilderComponent,
     InputBuilderComponent,
+    HttpChoicesBuilderComponent
   ],
 })
 export class BuilderModule {}
