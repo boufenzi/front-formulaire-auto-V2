@@ -3,7 +3,10 @@
     <div class="col-12">
       <h2>{{ currentQuestion.intitule }}</h2>
     </div>
-    <div *ngFor="let reponse of dataResponseFromBackend" class="col-3 buttonClassSpecial">
+    <app-loading-template-builder [dataResponseFromBackend]="dataResponseFromBackend">
+    </app-loading-template-builder>
+    <div *ngFor="let reponse of dataResponseFromBackend" 
+    [class]="currentQuestion.presentationTypeDiv + ' buttonClassSpecial'">
       <button
         mat-raised-button
         color="primary"

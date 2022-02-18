@@ -15,7 +15,10 @@ import { DateBuilderLimitationInputDirective } from '../directives/date-builder-
 import { HttpChoicesBuilderComponent } from './http-choices-builder/http-choices-builder.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpChoicesSimpleButtonsBuilderComponent } from './http-choices-simple-buttons-builder/http-choices-simple-buttons-builder.component';
-
+import { HttpSelectBaliseBuilderComponent } from './http-select-balise-builder/http-select-balise-builder.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoadingTemplateBuilderComponent } from './loading-template-builder/loading-template-builder.component';
 @NgModule({
   declarations: [
     DateBuilderComponent,
@@ -24,7 +27,9 @@ import { HttpChoicesSimpleButtonsBuilderComponent } from './http-choices-simple-
     PreviousQuestionComponent,
     DateBuilderLimitationInputDirective,
     HttpChoicesBuilderComponent,
-    HttpChoicesSimpleButtonsBuilderComponent
+    HttpChoicesSimpleButtonsBuilderComponent,
+    HttpSelectBaliseBuilderComponent,
+    LoadingTemplateBuilderComponent
   ],
   imports: [
     CommonModule,
@@ -33,10 +38,11 @@ import { HttpChoicesSimpleButtonsBuilderComponent } from './http-choices-simple-
     ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatInputModule,
     HttpClientModule,
     MatIconModule,
-    
+    MatProgressSpinnerModule
   ],
   exports: [
     DateBuilderComponent,

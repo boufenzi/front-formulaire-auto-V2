@@ -8,3 +8,17 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+.buttonClassSpecial {
+
+  padding: .25rem;
+  }
+
+  .buttonClassSpecial button{
+    width: 100%;
+}
+.loading{
+  font-weight: bold;
+}
+.row {
+  padding: 0px 25px;
+}

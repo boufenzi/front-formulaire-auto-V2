@@ -21,7 +21,11 @@ export class MultiChoiceBuilderComponent implements OnInit, OnDestroy {
     private route: Router,
     public questionService: QuestionsService,
     private router: ActivatedRoute
-  ) {}
+  ) {
+    this.router.paramMap.subscribe(params => {
+      this.ngOnInit();
+  });
+  }
 
   async ngOnInit() {
     if (this.questionToShow) {

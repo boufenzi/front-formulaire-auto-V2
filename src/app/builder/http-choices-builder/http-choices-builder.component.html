@@ -1,8 +1,13 @@
+
+
 <div class="row" @fade *ngIf="currentQuestion">
     <div class="col-12">
       <h2>{{ currentQuestion.intitule }}</h2>
     </div>
-    <div *ngFor="let reponse of dataResponseFromBackend" class="col-2 buttonClassSpecial">
+ <app-loading-template-builder [dataResponseFromBackend]="dataResponseFromBackend">
+ </app-loading-template-builder>
+    <div *ngFor="let reponse of dataResponseFromBackend" 
+    [class]="currentQuestion.presentationTypeDiv + ' buttonClassSpecial'">
       <button  
    
         (click)="

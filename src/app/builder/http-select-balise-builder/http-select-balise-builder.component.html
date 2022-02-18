@@ -1,0 +1,43 @@
+
+<div class="row" @fade *ngIf="currentQuestion">
+    <div class="col-12">
+      <h2>{{ currentQuestion.intitule }}</h2>
+    </div>
+    <app-loading-template-builder [dataResponseFromBackend]="dataResponseFromBackend">
+    </app-loading-template-builder>
+    <div class="col-12">    
+        <mat-form-field appearance="fill" class="selectBaliseClass">
+  
+          <mat-select [(ngModel)]="selectBaliseId"  name="selectBaliseId">
+            <mat-option *ngFor="let reponse of dataResponseFromBackend | keyvalue"
+             [value]="reponse.key"
+            selected
+             >
+              {{reponse.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="clearBoth">&nbsp;</div>
+    <div class="col-4">
+      <app-previous-question
+        [currentQuestion]="currentQuestion"
+        (previousQuestionEvent)="previousQuestion($event)"
+      ></app-previous-question>
+    </div>
+    <div class="col-4">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="
+          nextQuestionRedirection(
+            currentQuestion.reponsesPossibles.nextQuestionId,
+            currentQuestion.id
+          )
+        "
+      >
+        Suivant
+      </button>
+    </div>
+  </div>
+  

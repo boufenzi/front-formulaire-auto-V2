@@ -43,6 +43,9 @@ putDataFromJsonObject(question, value) {
     case "carCvNumber":  {
       this.carModel.CarCvNumber = value;break;
     }
+    case "carCarrosserie": {
+      this.carModel.CarCarrosserie = value; break;
+    }
     case "carVersion": {
       this.carModel.CarVersion = value; break;
     }

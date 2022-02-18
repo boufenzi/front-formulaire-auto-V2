@@ -9,7 +9,7 @@ import { QuestionsService } from 'src/app/services/questions.service';
 })
 export class QuestionRoutingComponent implements OnInit {
   currentQuestion: any;
-  firstQuestion: string = '1';
+  firstQuestion: string = 'mise_ciculationQuestion';
 
   constructor(public questionService: QuestionsService) {}
 

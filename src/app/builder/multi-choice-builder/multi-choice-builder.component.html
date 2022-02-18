@@ -2,7 +2,8 @@
   <div class="col-12">
     <h2>{{ currentQuestion.intitule }}</h2>
   </div>
-  <div *ngFor="let reponse of currentQuestion.reponsesPossibles" class="col-1">
+  <div *ngFor="let reponse of currentQuestion.reponsesPossibles"
+   [class]="currentQuestion.presentationTypeDiv + ' buttonClassSpecial'">
     <button
       mat-raised-button
       color="primary"

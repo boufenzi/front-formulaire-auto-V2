@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpChoicesBuilderComponent } from '../builder/http-choices-builder/http-choices-builder.component';
 import { HttpChoicesSimpleButtonsBuilderComponent } from '../builder/http-choices-simple-buttons-builder/http-choices-simple-buttons-builder.component';
+import { HttpSelectBaliseBuilderComponent } from '../builder/http-select-balise-builder/http-select-balise-builder.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,14 @@ const routes: Routes = [
   {
     path: 'HttpChoicesSimpleButtonsBuilder',
     component: HttpChoicesSimpleButtonsBuilderComponent
+  },
+  {
+    path: 'httpSelectBaliseBuilder',
+    component: HttpSelectBaliseBuilderComponent
+  },
+  {
+    path:'**',
+    component: QuestionRoutingComponent
   },
   {
     path: '',

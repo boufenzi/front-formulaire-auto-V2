@@ -42,4 +42,12 @@ export class Cars {
         this.carVersion = value;
     }
 
+    private carCarrosserie: string;
+    public get CarCarrosserie(): string {
+        return this.carCarrosserie;
+    }
+    public set CarCarrosserie(value: string) {
+        this.carCarrosserie = value;
+    }
+
 }
