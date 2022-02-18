@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 //@ts-ignore
-import Questions from '../models/questions copy.json';
+import Questions from '../models/questions.json';
 @Injectable({
   providedIn: 'root',
 })
 export class QuestionsService {
   questions = Questions;
-  constructor() {}
+  constructor() { }
 
   findById(id: any) {
     let question = this.questions.find((question) => question.id === id);

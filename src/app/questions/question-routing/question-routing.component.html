@@ -1,18 +1,8 @@
 <div [ngSwitch]="currentQuestion.typeComponent">
-  <app-date-builder
-    *ngSwitchCase="'dateBuilder'"
-    [questionToShow]="firstQuestion"
-  ></app-date-builder>
-  <app-multi-choice-builder
-    *ngSwitchCase="'multiChoixBuilder'"
-    [questionToShow]="firstQuestion"
-  ></app-multi-choice-builder>
-  <app-http-choices-builder
-  *ngSwitchCase="'httpChoicesBuilder'"
-  [questionToShow]="firstQuestion"
-></app-http-choices-builder>
-  <app-input-builder
-    *ngSwitchCase="'inputBuilder'"
-    [questionToShow]="firstQuestion"
-  ></app-input-builder>
+  <app-date-builder *ngSwitchCase="'dateBuilder'" [questionToShow]="firstQuestion"></app-date-builder>
+  <app-multi-choice-builder *ngSwitchCase="'multiChoixBuilder'" [questionToShow]="firstQuestion">
+  </app-multi-choice-builder>
+  <app-http-choices-builder *ngSwitchCase="'httpChoicesBuilder'" [questionToShow]="firstQuestion">
+  </app-http-choices-builder>
+  <app-input-builder *ngSwitchCase="'inputBuilder'" [questionToShow]="firstQuestion"></app-input-builder>
 </div>

@@ -21,16 +21,16 @@ export class HttpChoicesBuilderComponent implements OnInit, OnDestroy {
   previousQuestionId: string;
   subSink = new SubSink();
   currentQuestionId: string;
-  dataResponseFromBackend: [];
+  dataResponseFromBackend: any;
 
   constructor(private router: ActivatedRoute, private http: HttpClient,
     private questionService: QuestionsService, private route: Router,
-     private carsService: CarsService, private carsAttribut: Cars) {
-       // permet de reload component if request is from the same url
-      this.router.paramMap.subscribe(params => {
-        this.ngOnInit();
+    private carsService: CarsService) {
+    // permet de reload component if request is from the same url
+    this.router.paramMap.subscribe(params => {
+      this.ngOnInit();
     });
-      }
+  }
 
   async ngOnInit() {
     if (this.questionToShow) {
@@ -50,15 +50,18 @@ export class HttpChoicesBuilderComponent implements OnInit, OnDestroy {
     // if(this.carsService.getCars() && this.carsService.getCars().length > 0) {
     //   this.dataResponseFromBackend = this.carsService.getCars();
     // }else 
-  
+
   }
 
   getDataFromBackend() {
-    if(!!this.currentQuestion) {
+    if (!!this.currentQuestion) {
       this.subSink.add(this.http.post(environment.urlBackend + '/' +
-       this.currentQuestion.urlHttpRequest, this.carsService.getParamsCar())
-      .subscribe((data:[]) =>  {this.dataResponseFromBackend = data; this.carsService.Cars(data)}));
-      }
+        this.currentQuestion.urlHttpRequest, this.carsService.getParamsCar())
+        .subscribe((data: []) => {
+          this.dataResponseFromBackend = data;
+          this.carsService.Cars(data)
+        }));
+    }
   }
   getCurrentQuestionData() {
     this.currentQuestion = this.questionService.findById(
@@ -73,8 +76,8 @@ export class HttpChoicesBuilderComponent implements OnInit, OnDestroy {
       );
     }
   }
-  putDataforUrlParams (response) {
-    this.carsService.putDataFromJsonObject(this.currentQuestion, response);   
+  putDataforUrlParams(response) {
+    this.carsService.putDataFromJsonObject(this.currentQuestion, response);
   }
 
   nextQuestionRedirection(

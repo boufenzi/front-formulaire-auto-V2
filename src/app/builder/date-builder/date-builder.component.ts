@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { SubSink } from 'subsink';
 import { CarsService } from 'src/app/services/cars.service';
-import { Cars } from 'src/app/models/Cars';
+
 
 @Component({
   selector: 'app-date-builder',
@@ -48,8 +48,11 @@ export class DateBuilderComponent implements OnInit, OnDestroy {
     public questionService: QuestionsService,
     private router: ActivatedRoute,
     private carsService: CarsService, 
-    private carsAttribut: Cars
-  ) {}
+  ) {
+    this.router.paramMap.subscribe(params => {
+      this.ngOnInit();
+  });
+  }
 
   async ngOnInit() {
     if (this.questionToShow) {

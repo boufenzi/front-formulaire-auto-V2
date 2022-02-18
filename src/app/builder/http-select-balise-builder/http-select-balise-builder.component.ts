@@ -23,7 +23,11 @@ export class HttpSelectBaliseBuilderComponent implements OnInit {
  
 
   constructor(private router: ActivatedRoute, private questionService: QuestionsService,
-    private http: HttpClient, private route: Router) { }
+    private http: HttpClient, private route: Router) {
+      this.router.paramMap.subscribe(params => {
+        this.ngOnInit();
+    });
+     }
 
   async ngOnInit() {
     this.dataResponseFromBackend = []; // on initilise le tableau pour vider view lors du demarrage

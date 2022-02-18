@@ -28,9 +28,14 @@ export class InputBuilderComponent implements OnInit, OnDestroy {
     private route: Router,
     public questionService: QuestionsService,
     private router: ActivatedRoute
-  ) {}
+  ) {
+    this.router.paramMap.subscribe(params => {
+      this.ngOnInit();
+  });
+  }
 
   async ngOnInit() {
+    this.inputForm.get('inputBuilderName').setValue('');
     if (this.questionToShow) {
       this.currentQuestionId = this.questionToShow;
       //  this.previousQuestionId = this.currentQuestion.previousQuestionId;

@@ -19,6 +19,7 @@ import { HttpSelectBaliseBuilderComponent } from './http-select-balise-builder/h
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoadingTemplateBuilderComponent } from './loading-template-builder/loading-template-builder.component';
+import { FinFormBuilderComponent } from './fin-form-builder/fin-form-builder.component';
 @NgModule({
   declarations: [
     DateBuilderComponent,
@@ -29,7 +30,8 @@ import { LoadingTemplateBuilderComponent } from './loading-template-builder/load
     HttpChoicesBuilderComponent,
     HttpChoicesSimpleButtonsBuilderComponent,
     HttpSelectBaliseBuilderComponent,
-    LoadingTemplateBuilderComponent
+    LoadingTemplateBuilderComponent,
+    FinFormBuilderComponent
   ],
   imports: [
     CommonModule,

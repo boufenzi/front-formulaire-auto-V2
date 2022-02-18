@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpChoicesBuilderComponent } from '../builder/http-choices-builder/http-choices-builder.component';
 import { HttpChoicesSimpleButtonsBuilderComponent } from '../builder/http-choices-simple-buttons-builder/http-choices-simple-buttons-builder.component';
 import { HttpSelectBaliseBuilderComponent } from '../builder/http-select-balise-builder/http-select-balise-builder.component';
+import { FinFormBuilderComponent } from '../builder/fin-form-builder/fin-form-builder.component';
 
 const routes: Routes = [
   {
@@ -34,7 +35,11 @@ const routes: Routes = [
     component: HttpSelectBaliseBuilderComponent
   },
   {
-    path:'**',
+    path: 'finQuestionBuilder',
+    component: FinFormBuilderComponent
+  },
+  {
+    path: '**',
     component: QuestionRoutingComponent
   },
   {
@@ -47,4 +52,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class QuestionsRoutingModule {}
+export class QuestionsRoutingModule { }
