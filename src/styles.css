@@ -10,9 +10,15 @@ body {
 }
 .buttonClassSpecial {
 
-  padding: .25rem;
+  padding: .15rem;
   }
-
+  input[type="text"]
+  {
+    font-size:30px;
+    font-weight: bold;
+    text-align: center;
+    min-width: 64px;
+  }
   .buttonClassSpecial button{
     width: 100%;
 }
@@ -20,5 +26,13 @@ body {
   font-weight: bold;
 }
 .row {
-  padding: 0px 25px;
+  padding: 0px 20px;
+}
+
+.label-increment-decrement{
+  font-weight: bold;
+  font-size: 30px;
+}
+.labelQuestionInput{
+  font-weight: bold;
 }

@@ -22,7 +22,7 @@
     "reponsesPossibles": [],
     "urlHttpRequest": "getCarsMarque",
     "attributForApiParam": "carMarque",
-    "presentationTypeDiv": "col-2",
+    "presentationTypeDiv": "col-3",
     "previousQuestionId": "",
     "reponseChoisie": "",
     "nextQuestionId": "modeleQuestion"
@@ -82,7 +82,7 @@
     "reponsesPossibles": [],
     "urlHttpRequest": "getCarsVersion",
     "attributForApiParam": "carVersion",
-    "presentationTypeDiv": "col-4",
+    "presentationTypeDiv": "col col-md-4 col-lg-4 col-xs-12",
     "previousQuestionId": "null",
     "reponseChoisie": "",
     "nextQuestionId": "stationnementQuestion"
@@ -91,7 +91,7 @@
     "id": "stationnementQuestion",
     "intitule": "indiquez le type de stationnement",
     "typeComponent": "multiChoixBuilder",
-    "presentationTypeDiv": "col-4",
+    "presentationTypeDiv": "col col-md-4 col-lg-4 col-xs-12",
     "reponsesPossibles": [
       {
         "key": "1",
@@ -136,7 +136,7 @@
     "id": "usageQuestion",
     "intitule": "indiquez l'usage du véhicule",
     "typeComponent": "multiChoixBuilder",
-    "presentationTypeDiv": "col-4",
+    "presentationTypeDiv": "col col-md-4 col-lg-4 col-xs-12",
     "reponsesPossibles": [
       {
         "key": "1",
@@ -217,7 +217,7 @@
     "id": "nbrMoisAssureeQuestion",
     "intitule": "indiquer nombre de mois assuré au cours des 36 derniers mois",
     "typeComponent": "multiChoixBuilder",
-    "presentationTypeDiv": "col-2",
+    "presentationTypeDiv": "col col-lg-2 col-md-2 col-xs-3",
     "reponsesPossibles": [
       {
         "key": "1",
@@ -427,7 +427,7 @@
     "id": "motifResiliationQuestion",
     "intitule": "Indiquez le motif de résiliation",
     "typeComponent": "multiChoixBuilder",
-    "presentationTypeDiv": "col-6",
+    "presentationTypeDiv": "col col-md-6",
     "reponsesPossibles": [
       {
         "key": "1",
@@ -543,7 +543,7 @@
     "id": "motifSinistreQuestion",
     "intitule": "Indiquez la nature du dernier sinistre rencontré",
     "typeComponent": "multiChoixBuilder",
-    "presentationTypeDiv": "col-6",
+    "presentationTypeDiv": "col col-xs-12 col-md-6 col-lg-6",
     "reponsesPossibles": [
       {
         "key": "1",
@@ -899,7 +899,7 @@
     "id": "prospectProfessionQuestion",
     "intitule": "Indiquez votre profession : ",
     "typeComponent": "multiChoixBuilder",
-    "presentationTypeDiv": "col-4",
+    "presentationTypeDiv": "col col-md-4 col-xs-12 col-lg-4",
     "reponsesPossibles": [
       {
         "key": "1",

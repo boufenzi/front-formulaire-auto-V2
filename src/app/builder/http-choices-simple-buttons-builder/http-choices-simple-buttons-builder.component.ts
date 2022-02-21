@@ -23,12 +23,12 @@ export class HttpChoicesSimpleButtonsBuilderComponent implements OnInit {
 
   constructor(private router: ActivatedRoute, private questionService: QuestionsService,
     private http: HttpClient, private carsService: CarsService, private route: Router) {
-      this.router.paramMap.subscribe(params => {
-        this.ngOnInit();
+    this.router.paramMap.subscribe(params => {
+      this.ngOnInit();
     });
-     }
+  }
 
- 
+
   async ngOnInit() {
     this.dataResponseFromBackend = []; // on initilise le tableau pour vider view lors du demarrage
     if (this.questionToShow) {
@@ -47,11 +47,23 @@ export class HttpChoicesSimpleButtonsBuilderComponent implements OnInit {
   }
 
   getDataFromBackend() {
-    if(!!this.currentQuestion) {
+    if (!!this.currentQuestion) {
       this.subSink.add(this.http.post(environment.urlBackend + '/' +
-       this.currentQuestion.urlHttpRequest, this.carsService.getParamsCar())
-      .subscribe((data:[]) =>  {this.dataResponseFromBackend = data;}));
-      }
+        this.currentQuestion.urlHttpRequest, this.carsService.getParamsCar())
+        .subscribe((data: []) => {
+
+          this.dataResponseFromBackend = data;
+          // if (this.dataResponseFromBackend.length == 1) {
+          //   console.log(this.dataResponseFromBackend);
+          //   this.nextQuestionRedirection(
+          //     this.currentQuestion.nextQuestionId,
+          //     this.dataResponseFromBackend[0],
+          //     this.currentQuestion.id
+          //   );
+          // }
+
+        }));
+    }
   }
 
 
@@ -81,8 +93,8 @@ export class HttpChoicesSimpleButtonsBuilderComponent implements OnInit {
     ]); // show selon type component de la next question
   }
 
-  putDataforUrlParams (response) {
-    this.carsService.putDataFromJsonObject(this.currentQuestion, response);   
+  putDataforUrlParams(response) {
+    this.carsService.putDataFromJsonObject(this.currentQuestion, response);
   }
   nextQuestionRedirection(
     idNextQuestion: string,

@@ -22,13 +22,14 @@ export class DateBuilderComponent implements OnInit, OnDestroy {
   questions = this.questionService.getQuestion();
 
   @Input() questionToShow: string;
+  incrementValue: number = 1;
   currentQuestion: any;
   currentQuestionId: string;
   previousQuestionId: string;
-  dateLimit = new Date().getFullYear()+1;
+  dateLimit = new Date().getFullYear() + 1;
   dateForm = new FormGroup({
-    jour: new FormControl('', [Validators.required,    Validators.min(1),
-      Validators.max(31)]),
+    jour: new FormControl('', [Validators.required, Validators.min(1),
+    Validators.max(31)]),
     mois: new FormControl('', [
       Validators.required,
       Validators.min(1),
@@ -47,11 +48,11 @@ export class DateBuilderComponent implements OnInit, OnDestroy {
     private route: Router,
     public questionService: QuestionsService,
     private router: ActivatedRoute,
-    private carsService: CarsService, 
+    private carsService: CarsService,
   ) {
     this.router.paramMap.subscribe(params => {
       this.ngOnInit();
-  });
+    });
   }
 
   async ngOnInit() {
@@ -91,14 +92,14 @@ export class DateBuilderComponent implements OnInit, OnDestroy {
     }
   }
 
-putDataforUrlParams () {
-  this.carsService.putDataFromJsonObject(this.currentQuestion,
-     this.dateForm.get('annee').value);
-   
-}
+  putDataforUrlParams() {
+    this.carsService.putDataFromJsonObject(this.currentQuestion,
+      this.dateForm.get('annee').value);
+
+  }
 
   nextQuestionRedirection(idNextQuestion: number, currentQuestionId: string) {
- this.putDataforUrlParams();
+    this.putDataforUrlParams();
     let response =
       this.dateForm.get('annee').value +
       '-' +

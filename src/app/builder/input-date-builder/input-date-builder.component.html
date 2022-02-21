@@ -1,0 +1,16 @@
+<div class="row" [formGroup]="dateForm">
+    <mat-label class="labelQuestionInput">{{fieldLabel}} </mat-label>
+    <button mat-raised-button class="col-xs-12 col-md-12 col-lg-12 col-12" (mousedown)="mousedownIncrement()"
+        (mouseup)="mouseup()" (mouseleave)="mouseup()" color="primary">
+        <label class="label-increment-decrement">+</label>
+    </button>
+
+
+    <input matInput appDateBuilderLimitationInput type="text" class="col-xs-12 col-md-12 col-lg-12 col-12"
+        [formControlName]="attributForm" [min]="min" [max]="max" />
+
+    <button mat-raised-button class="col-xs-12 col-md-12 col-lg-12 col-12" (mousedown)="mousedownDecrement()"
+        (mouseup)="mouseup()" (mouseleave)="mouseup()" color="primary">
+        <label class="label-increment-decrement">-</label>
+    </button>
+</div>

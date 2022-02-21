@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { BuilderRoutingModule } from './builder-routing.module';
 import { DateBuilderComponent } from './date-builder/date-builder.component';
 import { MultiChoiceBuilderComponent } from './multi-choice-builder/multi-choice-builder.component';
@@ -16,10 +15,11 @@ import { HttpChoicesBuilderComponent } from './http-choices-builder/http-choices
 import { HttpClientModule } from '@angular/common/http';
 import { HttpChoicesSimpleButtonsBuilderComponent } from './http-choices-simple-buttons-builder/http-choices-simple-buttons-builder.component';
 import { HttpSelectBaliseBuilderComponent } from './http-select-balise-builder/http-select-balise-builder.component';
-import {MatSelectModule} from '@angular/material/select';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingTemplateBuilderComponent } from './loading-template-builder/loading-template-builder.component';
 import { FinFormBuilderComponent } from './fin-form-builder/fin-form-builder.component';
+import { InputDateBuilderComponent } from './input-date-builder/input-date-builder.component';
 @NgModule({
   declarations: [
     DateBuilderComponent,
@@ -31,7 +31,8 @@ import { FinFormBuilderComponent } from './fin-form-builder/fin-form-builder.com
     HttpChoicesSimpleButtonsBuilderComponent,
     HttpSelectBaliseBuilderComponent,
     LoadingTemplateBuilderComponent,
-    FinFormBuilderComponent
+    FinFormBuilderComponent,
+    InputDateBuilderComponent
   ],
   imports: [
     CommonModule,
@@ -53,4 +54,4 @@ import { FinFormBuilderComponent } from './fin-form-builder/fin-form-builder.com
     HttpChoicesBuilderComponent
   ],
 })
-export class BuilderModule {}
+export class BuilderModule { }

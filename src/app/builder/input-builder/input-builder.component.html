@@ -11,23 +11,17 @@
       </div>
     </div>
   </form>
-  <div class="col-2">
-    <app-previous-question
-      [currentQuestion]="currentQuestion"
-      (previousQuestionEvent)="previousQuestion($event)"
-    ></app-previous-question>
+  <div class="col-6 col col-xs-6 col-md-4 col-lg-4">
+    <app-previous-question [currentQuestion]="currentQuestion" (previousQuestionEvent)="previousQuestion($event)">
+    </app-previous-question>
   </div>
-  <div class="col-4">
-    <button
-      mat-raised-button [disabled]="inputForm.invalid"
-      color="primary"
-      (click)="
+  <div class="col-6 col col-xs-6 col-md-4 col-lg-4">
+    <button mat-raised-button [disabled]="inputForm.invalid" color="primary" (click)="
         nextQuestionRedirection(
           currentQuestion.reponsesPossibles.nextQuestionId,
           currentQuestion.id
         )
-      "
-    >
+      ">
       Suivant
     </button>
   </div>
