@@ -20,6 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingTemplateBuilderComponent } from './loading-template-builder/loading-template-builder.component';
 import { FinFormBuilderComponent } from './fin-form-builder/fin-form-builder.component';
 import { InputDateBuilderComponent } from './input-date-builder/input-date-builder.component';
+import { MultipleInputBuilderComponent } from './multiple-input-builder/multiple-input-builder.component';
 @NgModule({
   declarations: [
     DateBuilderComponent,
@@ -32,7 +33,8 @@ import { InputDateBuilderComponent } from './input-date-builder/input-date-build
     HttpSelectBaliseBuilderComponent,
     LoadingTemplateBuilderComponent,
     FinFormBuilderComponent,
-    InputDateBuilderComponent
+    InputDateBuilderComponent,
+    MultipleInputBuilderComponent
   ],
   imports: [
     CommonModule,
